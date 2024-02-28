@@ -1,0 +1,26 @@
+{
+  "name": "rest-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index",
+    "dev": "nodemon dist/index",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "20.11.20",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
+    "eslint": "8.57.0",
+    "nodemon": "3.1.0",
+    "standard": "^17.1.0"
+  },
+  "dependencies": {
+    "express": "4.18.2"
+  }
+}
