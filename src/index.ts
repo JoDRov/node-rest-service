@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
-import express, { Request, Response } from 'express'
+import express, { NextFunction, Request, Response } from 'express'
 // eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
 import { logger } from './loggerMiddleware'
 // eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
@@ -32,15 +32,15 @@ let notes = [
     }
 ]
 
-app.get('/', (request, response) => {
+app.get('/', (request: Request, response: Response) => {
     // express detecta que el contenido es HTML y lo insertara como tal en la web
     response.send('<h1>Hello Worlds</h1>')
 })
 // direccion localhost:3001/api/notes
-app.get('/api/notes', (request, response) => {
+app.get('/api/notes', (request: Request, response: Response) => {
     response.json(notes)
 })
-app.get('/api/notes/:id', (request, response, next) => {
+app.get('/api/notes/:id', (request: Request, response: Response, next: NextFunction) => {
     // coge la direccion que le añadimos despues de notes: /api/notes/1 guarda 1 en const id
     const id: number = Number(request.params.id)
     // si hay una nota con id uno la guarda en const note
@@ -57,13 +57,13 @@ app.get('/api/notes/:id', (request, response, next) => {
     }
 })
 // DELETE----------------------------------------DELETE----------------------------------------DELETE
-app.delete('/api/notes/:id', (request, response) => {
+app.delete('/api/notes/:id', (request: Request, response: Response) => {
     const id: number = Number(request.params.id)
     notes = notes.filter((note) => note.id !== id)
     response.status(204).json('Post deleted').end()
 })
 // POST------------------------------------------POST------------------------------------------POST
-app.post('/api/notes', (request, response) => {
+app.post('/api/notes', (request: Request, response: Response) => {
     const note = request.body
 
     // If there's no note or note.content throw error
@@ -79,8 +79,7 @@ app.post('/api/notes', (request, response) => {
     const newNote = {
         id: maxId + 1,
         content: note.content,
-        important:
-            typeof note.important !== 'undefined' ? note.important : false,
+        important: typeof note.important !== 'undefined' ? note.important : false,
         date: new Date().toISOString()
     }
 
