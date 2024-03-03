@@ -34,7 +34,7 @@ let notes = [
 
 app.get('/', (request: Request, response: Response) => {
     // express detecta que el contenido es HTML y lo insertara como tal en la web
-    response.send('<h1>Hello Pilarillas</h1>')
+    response.send('<h1>Hello World</h1>')
 })
 // direccion localhost:3001/api/notes
 app.get('/api/notes', (request: Request, response: Response) => {
