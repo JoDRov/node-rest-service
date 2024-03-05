@@ -1,0 +1,3 @@
+PUT http://localhost:3001/api/notes/1/toggle
+
+// change the number to change note id
