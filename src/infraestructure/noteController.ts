@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { NoteRepository } from '../infraestructure/noteRepository'
+import { NoteRepository } from '../application/noteRepository'
 
 export class NoteController {
     private noteRepository: NoteRepository
